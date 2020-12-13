@@ -28,7 +28,7 @@
                         <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Reports</a>
                         <div class="dropdown-menu">
                             <a class="dropdown-item" href="#" wire:click="$emit('excel')"><i class="dropdown-icon fa fa-file-excel-o"></i> MS Excel</a>
-                            <a class="dropdown-item" href="#"><i class="dropdown-icon fa fa-file-pdf-o"></i> PDF</a>
+                            <a class="dropdown-item" href="#" wire:click="$emit('pdf')"><i class="dropdown-icon fa fa-file-pdf-o"></i> PDF</a>
                         </div>
                     </li>
                     {{-- <li class="nav-item dropdown">

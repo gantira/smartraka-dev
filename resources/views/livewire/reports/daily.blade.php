@@ -1,5 +1,5 @@
 @section('title')
-    Report Harian
+    Laporan Harian
 @endsection
 
 <div>
@@ -23,7 +23,7 @@
                 <div class="tab-pane fade show active" id="user-list" role="tabpanel">
                     <div class="card">
                         <div class="card-header">
-                            <h3 class="card-title">Report Harian</h3>
+                            <h3 class="card-title">Laporan Harian</h3>
                             <div class="card-options">
                                 <select wire:model='company_id' class="form-control mr-10">
                                     <option value=""></option>

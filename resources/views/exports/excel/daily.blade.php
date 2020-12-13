@@ -1,7 +1,7 @@
 <table>
     <thead>
-        <tr><td colspan="7">{{ auth()->user()->company->name }}</td></tr>
-        <tr><td colspan="7">{{ $title }}</td></tr>
+        <tr><td align="center" colspan="7">{{ auth()->user()->company->name }}</td></tr>
+        <tr><td align="center" colspan="7">{{ $title }}</td></tr>
         <tr><td></td></tr>
         <tr>
             <th>Cabang</th>
