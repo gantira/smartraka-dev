@@ -1,6 +1,7 @@
 <!DOCTYPE html>
+
 <head>
-    <title>Laporan Harian</title>
+    <title>Laporan Jurnal</title>
 
     <style>
         table,
@@ -32,27 +33,24 @@
             <tr>
                 <th align="left">Cabang</th>
                 <th align="left">Tanggal</th>
-                <th align="left">Kategori</th>
-                <th align="center">Kuantitas</th>
+                <th align="left">Uraian</th>
                 <th align="right">Debit</th>
                 <th align="right">Kredit</th>
-                <th align="right">Saldo</th>
             </tr>
         </thead>
         <tbody>
-            @forelse ($dailys as $item)
+            @forelse ($journals as $key => $row)
                 <tr>
-                    <td>{{ $item->document->category->company->name }}</td>
-                    <td>{{ tanggal($item->created_at) }}</td>
-                    <td>{{ $item->document->category->name }}</td>
-                    <td align="center">{{ $item->document->totalqty }}</td>
-                    <td align="right">{{ rupiah($item->debit, 2) }}</td>
-                    <td align="right">{{ rupiah($item->credit, 2) }}</td>
-                    <td align="right">{{ rupiah($item->saldo, 2) }}</td>
+                    <td>{{ $key % 2 == 0 ? $row->company->name : '' }}</td>
+                    <td>{{ $key % 2 == 0 ? tanggal($row->created_at) : '' }}</td>
+                    <td align="{{ $key % 2 == 0 ?: 'right' }}">{{ $row->description }}
+                    </td>
+                    <td align="right">{{ rupiah($row->debit, 2) }}</td>
+                    <td align="right">{{ rupiah($row->credit, 2) }}</td>
                 </tr>
             @empty
                 <tr>
-                    <td colspan="7" class="text-center">Data tidak ditemukan</td>
+                    <td colspan="5" align="center">Tidak ada data</td>
                 </tr>
             @endforelse
         </tbody>

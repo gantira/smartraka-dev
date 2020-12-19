@@ -18,4 +18,31 @@ class Journal extends Model
         'debit',
         'credit',
     ];
+
+    public function document()
+    {
+        return $this->belongsTo(Document::class)->withTrashed();
+    }
+
+    public function company()
+    {
+        return $this->belongsTo(Company::class);
+    }
+
+    public function account()
+    {
+        return $this->belongsTo(Account::class);
+    }
+
+    public function scopeMyCompany()
+    {
+        return $this->whereCompanyId(auth()->user()->company->id);
+    }
+
+    public function scopeVerified($q)
+    {
+        return $q->whereHas('document', function ($q) {
+            return $q->whereStatus(1);
+        });
+    }
 }

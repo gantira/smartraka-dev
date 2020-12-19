@@ -1,5 +1,5 @@
 @section('title')
-    Laporan Harian
+    Laporan Jurnal
 @endsection
 
 <div>
@@ -23,7 +23,7 @@
                 <div class="tab-pane fade show active" id="user-list" role="tabpanel">
                     <div class="card">
                         <div class="card-header">
-                            <h3 class="card-title">Laporan Harian</h3>
+                            <h3 class="card-title">Laporan Jurnal</h3>
                             <div class="card-options">
                                 <select wire:model='company_id' class="form-control mr-10">
                                     <option value=""></option>
@@ -42,36 +42,33 @@
                                         <tr>
                                             <th>Cabang</th>
                                             <th>Tanggal</th>
-                                            <th>Kategori</th>
-                                            <th>Kuantitas</th>
+                                            <th>Uraian</th>
                                             <th class="text-right">Debit</th>
                                             <th class="text-right">Kredit</th>
-                                            <th class="text-right">Saldo</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @forelse ($dailys as $item)
+                                        @forelse ($journals as $key => $row)
                                             <tr>
-                                                <td>{{ $item->document->category->company->name }}</td>
-                                                <td>{{ tanggal($item->created_at) }}</td>
-                                                <td>{{ $item->document->category->name }}</td>
-                                                <td align="center">{{ rupiah($item->document->totalqty, 2) }}</td>
-                                                <td align="right">{{ rupiah($item->debit, 2) }}</td>
-                                                <td align="right">{{ rupiah($item->credit, 2) }}</td>
-                                                <td align="right">{{ rupiah($item->saldo, 2) }}</td>
+                                                <td>{{ $key % 2 == 0 ? $row->company->name : '' }}</td>
+                                                <td>{{ $key % 2 == 0 ? tanggal($row->created_at) : '' }}</td>
+                                                <td class="{{ $key % 2 == 0 ?: 'text-right' }}">{{ $row->description }}
+                                                </td>
+                                                <td class="text-right">{{ rupiah($row->debit, 2) }}</td>
+                                                <td class="text-right">{{ rupiah($row->credit, 2) }}</td>
                                             </tr>
                                         @empty
                                             <tr>
-                                                <td colspan="7" class="text-center">Data tidak ditemukan</td>
+                                                <td colspan="5" class="text-center">Tidak ada data</td>
                                             </tr>
                                         @endforelse
                                     </tbody>
                                 </table>
                             </div>
                             <div class="d-flex justify-content-between align-items-start mt-15">
-                                <div>{{ $dailys->links() }}</div>
+                                <div>{{ $journals->links() }}</div>
                                 <div class="d-flex align-items-center text-nowrap">
-                                    <div class="mr-1">Show Page</div> 
+                                    <div class="mr-1">Show Page</div>
                                     <div>
                                         <select wire:model="perPage" class="form-control">
                                             <option value="15">15</option>

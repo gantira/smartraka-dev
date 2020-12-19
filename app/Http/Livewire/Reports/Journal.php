@@ -2,15 +2,15 @@
 
 namespace App\Http\Livewire\Reports;
 
-use App\Exports\DailyExport;
-use App\Models\Balance;
+use App\Exports\JournalExport;
 use App\Models\Company;
-use Carbon\Carbon;
+use App\Models\Journal as AppJournal;
+use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\DB;
 use Livewire\Component;
 use Livewire\WithPagination;
 
-class Daily extends Component
+class Journal extends Component
 {
     use WithPagination;
 
@@ -21,17 +21,14 @@ class Daily extends Component
     protected $listeners = ['excel', 'pdf'];
     protected $paginationTheme = 'bootstrap';
 
-    protected $queryString = ['company_id' => ['except' => ''], 'periode' => ['except' => '']];
+    protected $queryString = ['company_id' => ['except' => ''], 'periode' => ['except' => ''], 'perPage' => ['except' => 1]];
 
     public function render()
     {
-        DB::statement(DB::raw('SET @total = 0'));
-
-        $dailys = Balance::verified()
-            ->when(!auth()->user()->hasRole(['admin|super-admin']), function ($query) {
+        $journals = AppJournal::verified()
+            ->when(!auth()->user()->hasRole(['admin', 'super-admin']), function ($query) {
                 return $query->myCompany();
             })
-            ->select('*', DB::raw('@total := @total + (debit - credit) as saldo'))
             ->when($this->company_id, function ($query) {
                 return $query->whereHas('document.category', function ($query) {
                     return $query->where('company_id', $this->company_id);
@@ -44,20 +41,20 @@ class Daily extends Component
 
         $selectCompanies = Company::select('id', 'name')->get();
 
-        return view('livewire.reports.daily', [
-            'dailys' => $dailys,
+        return view('livewire.reports.journal', [
+            'journals' => $journals,
             'selectCompanies' => $selectCompanies
         ]);
     }
 
     public function excel()
     {
-        return (new DailyExport)->filter($this->company_id, $this->periode)->download('Laporan Harian.xlsx');
+        return (new JournalExport)->filter($this->company_id, $this->periode)->download('Laporan Jurnal.xlsx');
     }
 
     public function pdf()
     {
-        return redirect()->route('pdf.daily.export', [
+        return redirect()->route('pdf.journal.export', [
             'company_id' => $this->company_id,
             'periode' => $this->periode,
         ]);
