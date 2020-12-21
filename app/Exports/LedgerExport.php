@@ -2,7 +2,6 @@
 
 namespace App\Exports;
 
-use App\Models\Ledger;
 use Carbon\Carbon;
 use Illuminate\Contracts\View\View;
 use Maatwebsite\Excel\Concerns\Exportable;
@@ -33,9 +32,14 @@ class LedgerExport implements WithStyles, FromView
 
     public function view(): View
     {
-        $ledger = Ledger::verified()
+        $ledger = AppLedger::verified()
             ->when(!auth()->user()->hasRole(['admin|super-admin']), function ($q) {
                 return $q->myCompany();
+            })
+            ->when($this->company_id, function ($q) {
+                return $q->whereHas('document.category', function ($q) {
+                    return $q->where('company_id', $this->company_id);
+                });
             })
             ->get()->groupBy(function ($item) {
                 return $item->company->name;

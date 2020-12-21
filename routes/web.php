@@ -1,7 +1,7 @@
 <?php
 
-use App\Http\Controllers\{AuthenticationController, ChatappController, Controller, ExportController, HrmsController, JobController, PagesController, ProjectController};
-use App\Http\Livewire\{Reports, Products, Signatures, Dashboards, Sofs, Documents, Categories, Accounts, Genders, Maritals, JobTitles, Educations, Religions, Units, Companies, Settings, Users};
+use App\Http\Controllers\{AuthenticationController, ChatappController, Controller, ExportPdfController, HrmsController, JobController, PagesController, ProjectController};
+use App\Http\Livewire\{Reports, Products, Revenue, Signatures, Dashboards, Sofs, Documents, Categories, Accounts, Genders, Maritals, JobTitles, Educations, Religions, Units, Companies, Settings, Users};
 use Illuminate\Support\Facades\Route;
 /*
 |--------------------------------------------------------------------------
@@ -21,10 +21,11 @@ Auth::routes([
 
 
 Route::middleware('auth')->group(function () {
-    Route::get('pdf/daily/{company_id?}/{periode?}', [ExportController::class, 'daily'])->name('pdf.daily.export');
-    Route::get('pdf/journal/{company_id?}/{periode?}', [ExportController::class, 'journal'])->name('pdf.journal.export');
-    Route::get('pdf/ledger/{company_id?}/{periode?}', [ExportController::class, 'ledger'])->name('pdf.ledger.export');
-    
+    Route::get('pdf/daily/{company_id?}/{periode?}', [ExportPdfController::class, 'daily'])->name('pdf.daily.export');
+    Route::get('pdf/journal/{company_id?}/{periode?}', [ExportPdfController::class, 'journal'])->name('pdf.journal.export');
+    Route::get('pdf/ledger/{company_id?}/{periode?}', [ExportPdfController::class, 'ledger'])->name('pdf.ledger.export');
+    Route::get('pdf/revenue/{company_id?}/{periode?}', [ExportPdfController::class, 'revenue'])->name('pdf.revenue.export');
+
     Route::get('/', Dashboards\Index::class)->name('dashboard.index');
     Route::get('accounts', Accounts\Index::class)->name('accounts.index');
     Route::get('genders', Genders\Index::class)->name('genders.index');
@@ -45,6 +46,7 @@ Route::middleware('auth')->group(function () {
     Route::get('reports/daily', Reports\Daily::class)->name('reports.daily');
     Route::get('reports/journal', Reports\Journal::class)->name('reports.journal');
     Route::get('reports/ledger', Reports\Ledger::class)->name('reports.ledger');
+    Route::get('reports/revenue', Reports\Revenue::class)->name('reports.revenue');
 
     /* HR */
     Route::get('hrms', function () {

@@ -1,8 +1,14 @@
 <table>
     <thead>
-        <tr><td align="center" colspan="5">{{ auth()->user()->company->name }}</td></tr>
-        <tr><td align="center" colspan="5">{{ $title }}</td></tr>
-        <tr><td></td></tr>
+        <tr>
+            <td align="center" colspan="5">{{ auth()->user()->company->name }}</td>
+        </tr>
+        <tr>
+            <td align="center" colspan="5">{{ $title }}</td>
+        </tr>
+        <tr>
+            <td></td>
+        </tr>
         <tr>
             <th>Cabang</th>
             <th>Tanggal</th>

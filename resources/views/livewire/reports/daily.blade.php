@@ -37,7 +37,7 @@
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
-                                <table class="table table-sm table-striped table-hover table-vcenter text-nowrap mb-0">
+                                <table class="table table-sm  table-hover table-vcenter text-nowrap mb-0">
                                     <thead>
                                         <tr>
                                             <th>Cabang</th>

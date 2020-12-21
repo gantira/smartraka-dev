@@ -33,6 +33,20 @@ class Account extends Model
         return $status;
     }
 
+    public function getAccountLabelAttribute()
+    {
+        switch ($this->status) {
+            case 0:
+                $status = 'Pendapatan';
+                break;
+            case 1:
+                $status = 'Biaya';
+                break;
+        }
+
+        return $status;
+    }
+
     public function getStatusBadgeLabelAttribute()
     {
         switch ($this->status) {

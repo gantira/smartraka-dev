@@ -42,7 +42,7 @@
                                     @foreach ($row as $key => $item)
                                         <p class="mb-0 badge badge-secondary">{{ $key }}</p>
                                         <table id="example"
-                                            class="table table-sm table-hover table-striped table-condensed">
+                                            class="table table-sm table-bordered table-hover">
                                             <thead>
                                                 <tr>
                                                     <th>Cabang</th>
