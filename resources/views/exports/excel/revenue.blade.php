@@ -1,15 +1,24 @@
-<p>{{ auth()->user()->company->name }}
-    <br>Laporan Laba Rugi
-    <br>{{ $title }}
-</p>
-<br>
-<table style="border-style: groove">
+<table>
     @forelse ($revenues as $company => $item)
+        @if ($loop->first)
+            <tr>
+                <td align="center" colspan="3">{{ auth()->user()->company->name }}</td>
+            </tr>
+            <tr>
+                <td align="center" colspan="3">{{ $title }}</td>
+            </tr>
+        @endif
+
+        <tr>
+            <td></td>
+        </tr>
+
         @hasrole('admin|superadmin')
         <tr>
             <td colspan="3" style="font-size: 17px; ">{{ $company }}</td>
         </tr>
         @endhasrole
+
         @foreach ($item as $label => $row)
             <tr style="font-weight: bold">
                 <td colspan="3" class="lead text-uppercase bg-light lead"> {{ $label }}</td>
@@ -19,15 +28,15 @@
                     <td colspan="3" class="font-weight-lighter">{{ $index }}</td>
                 </tr>
                 @foreach ($account as $key => $val)
-                    <tr class="text-muted">
-                        <td class="w-50">- {{ $key }}</td>
-                        <td class="w-25 text-right">{{ rupiah($val, 2) }}</td>
+                    <tr>
+                        <td>- {{ $key }}</td>
+                        <td align="right">{{ rupiah($val, 2) }}</td>
                         <td></td>
                     </tr>
                     @if ($loop->last)
                         <tr>
                             <td>Total {{ $index }}</td>
-                            <td class="text-right">{{ rupiah($account->sum(), 2) }}</td>
+                            <td align="right">{{ rupiah($account->sum(), 2) }}</td>
                             <td></td>
                         </tr>
                     @endif
@@ -36,7 +45,7 @@
                     <tr style="font-weight: bold">
                         <td>Total {{ $label }}</td>
                         <td></td>
-                        <td class="text-right">{{ rupiah($item[$label]->collapse()->sum(), 2) }}</td>
+                        <td align="right">{{ rupiah($item[$label]->collapse()->sum(), 2) }}</td>
                     </tr>
                 @endif
             @endforeach
@@ -44,7 +53,7 @@
                 <tr style="font-weight: bold">
                     <td>LABA RUGI USAHA</td>
                     <td></td>
-                    <td class="text-right">
+                    <td align="right">
                         {{ rupiah($item['Pendapatan']->collapse()->sum() - $item['Biaya']->collapse()->sum(), 2) }}
                     </td>
                 </tr>

@@ -26,7 +26,6 @@
             <li class="{{ Route::currentRouteName() === 'reports.journal' ? 'active' : null }}"><a href="{{route('reports.journal')}}"><i class="icon-users"></i><span>Journal</span></a></li>
             <li class="{{ Route::currentRouteName() === 'reports.ledger' ? 'active' : null }}"><a href="{{route('reports.ledger')}}"><i class="icon-users"></i><span>Ledger</span></a></li>
             <li class="{{ Route::currentRouteName() === 'reports.revenue' ? 'active' : null }}"><a href="{{route('reports.revenue')}}"><i class="icon-users"></i><span>Revenue</span></a></li>
-            <li class="{{ Request::segment(1) === 'sofs' ? 'active' : null }}"><a href="{{route('sofs.index')}}"><i class="icon-users"></i><span>Revenue</span></a></li>
             <li class="{{ Request::segment(1) === 'sofs' ? 'active' : null }}"><a href="{{route('sofs.index')}}"><i class="icon-users"></i><span>Balance</span></a></li>
             <li class="{{ Request::segment(1) === 'sofs' ? 'active' : null }}"><a href="{{route('sofs.index')}}"><i class="icon-users"></i><span>Finance</span></a></li>
             

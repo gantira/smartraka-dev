@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Models\Balance;
+use App\Models\DocumentDetail;
 use App\Models\Journal;
 use App\Models\Ledger;
 use Carbon\Carbon;
@@ -117,5 +118,43 @@ class ExportPdfController extends Controller
             'ledgers' => $ledgers,
             'title' => $title
         ])->download('Laporan Buku Besar.pdf');
+    }
+
+    public function revenue($company_id = null, $periode = null)
+    {
+        $revenues = DocumentDetail::verified()
+            ->select('*', DB::raw("DATE_FORMAT(created_at, '%Y-%m') AS yearMonth"))
+            ->when(!auth()->user()->hasRole('admin|super-admin'), function ($q) {
+                return $q->myCompany();
+            })
+            ->when($company_id, function ($q) use ($company_id) {
+                return $q->whereHas('document.category', function ($q) use ($company_id) {
+                    return $q->where('company_id', $company_id);
+                });
+            })
+            ->when($periode, function ($q) use ($periode) {
+                return $q->whereMonth('created_at', Carbon::parse($periode)->month)->whereYear('created_at', Carbon::parse($periode)->year);
+            })
+            ->get()->groupBy([
+                'company_label',
+                'account_status_label',
+                'account_label',
+                'product_label',
+            ], true)->transform(function ($item) {
+                return $item->transform(function ($item) {
+                    return $item->transform(function ($item) {
+                        return $item->transform(function ($item) {
+                            return $item->sum('price');
+                        });
+                    });
+                });
+            });
+
+        $title = $periode ? 'Laporan Laba Rugi Periode ' . Carbon::parse($periode)->formatLocalized('%B %Y') : 'Laporan Laba Rugi';
+
+        return PDF::loadView('exports.pdf.revenue', [
+            'revenues' => $revenues,
+            'title' => $title
+        ])->download('Laporan Laba Rugi.pdf');
     }
 }

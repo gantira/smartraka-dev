@@ -2,6 +2,7 @@
 
 namespace App\Exports;
 
+use App\Models\Ledger;
 use Carbon\Carbon;
 use Illuminate\Contracts\View\View;
 use Maatwebsite\Excel\Concerns\Exportable;
@@ -32,7 +33,7 @@ class LedgerExport implements WithStyles, FromView
 
     public function view(): View
     {
-        $ledger = AppLedger::verified()
+        $ledger = Ledger::verified()
             ->when(!auth()->user()->hasRole(['admin|super-admin']), function ($q) {
                 return $q->myCompany();
             })

@@ -19,7 +19,7 @@
                 <td>{{ $item->document->category->company->name }}</td>
                 <td>{{ tanggal($item->created_at) }}</td>
                 <td>{{ $item->document->category->name }}</td>
-                <td align="center">{{ $item->document->totalqty }}</td>
+                <td align="center">{{ rupiah($item->document->totalqty, 2) }}</td>
                 <td align="right">{{ rupiah($item->debit, 2) }}</td>
                 <td align="right">{{ rupiah($item->credit, 2) }}</td>
                 <td align="right">{{ rupiah($item->saldo, 2) }}</td>

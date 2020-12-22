@@ -63,7 +63,7 @@ class Revenue extends Component
 
     public function excel()
     {
-        return (new RevenueExport)->filter($this->company_id, $this->periode)->download('Laporan Buku Besar.xlsx');
+        return (new RevenueExport)->filter($this->company_id, $this->periode)->download('Laporan Laba Rugi.xlsx');
     }
 
     public function pdf()
