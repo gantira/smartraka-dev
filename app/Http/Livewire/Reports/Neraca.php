@@ -23,7 +23,7 @@ class Neraca extends Component
     protected $listeners = ['excel', 'pdf'];
     protected $paginationTheme = 'bootstrap';
 
-    protected $queryString = ['company_id' => ['except' => ''], 'periode' => ['except' => ''], 'perPage' => ['except' => 1]];
+    protected $queryString = ['company_id' => ['except' => ''], 'periode' => ['except' => '']];
 
     public function render()
     {
@@ -39,15 +39,14 @@ class Neraca extends Component
             return $k;
         })->all();
 
-
         $neraca = AppNeraca::query()
             ->when($this->company_id, function ($q) {
                 return $q->whereHas('company', function ($q) {
                     return $q->where('company_id', $this->company_id);
                 });
             })
-            ->when(($this->month && $this->year), function ($q) {
-                return $q->where('month', $this->month)->where('year', $this->year);
+            ->when($this->periode, function ($query) {
+                return $query->where('month', Carbon::parse($this->periode)->month)->where('year', Carbon::parse($this->periode)->year);
             })
             ->get()
             ->groupBy([

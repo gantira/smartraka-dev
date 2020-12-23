@@ -7,6 +7,7 @@ use App\Models\Balance;
 use App\Models\DocumentDetail;
 use App\Models\Journal;
 use App\Models\Ledger;
+use App\Models\Neraca;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
 use PDF;
@@ -156,5 +157,47 @@ class ExportPdfController extends Controller
             'revenues' => $revenues,
             'title' => $title
         ])->download('Laporan Laba Rugi.pdf');
+    }
+
+    public function neraca($company_id = null, $periode = null)
+    {
+        $neraca = Neraca::query()
+            ->when($company_id, function ($q) use ($company_id) {
+                return $q->whereHas('company', function ($q) use ($company_id) {
+                    return $q->where('company_id', $company_id);
+                });
+            })
+            ->when($periode, function ($query) use ($periode) {
+                return $query->where('month', Carbon::parse($periode)->month)->where('year', Carbon::parse($periode)->year);
+            })
+            ->get()
+            ->groupBy([
+                'company_label',
+                function ($item) {
+                    return $item->neraca_account->status_label;
+                },
+                function ($item) {
+                    return $item->neraca_account->name;
+                },
+                function ($item) {
+                    return $item->name;
+                },
+            ])
+            ->transform(function ($item) {
+                return $item->transform(function ($item) {
+                    return $item->transform(function ($item) {
+                        return $item->transform(function ($item) {
+                            return $item->sum('price');
+                        });
+                    });
+                });
+            });
+
+        $title = $periode ? 'Laporan Neraca Periode ' . Carbon::parse($periode)->formatLocalized('%B %Y') : 'Laporan Neraca';
+
+        return PDF::loadView('exports.pdf.neraca', [
+            'neraca' => $neraca,
+            'title' => $title
+        ])->download('Laporan Neraca.pdf');
     }
 }

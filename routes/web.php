@@ -25,6 +25,7 @@ Route::middleware('auth')->group(function () {
     Route::get('pdf/journal/{company_id?}/{periode?}', [ExportPdfController::class, 'journal'])->name('pdf.journal.export');
     Route::get('pdf/ledger/{company_id?}/{periode?}', [ExportPdfController::class, 'ledger'])->name('pdf.ledger.export');
     Route::get('pdf/revenue/{company_id?}/{periode?}', [ExportPdfController::class, 'revenue'])->name('pdf.revenue.export');
+    Route::get('pdf/neraca/{company_id?}/{periode?}', [ExportPdfController::class, 'neraca'])->name('pdf.neraca.export');
 
     Route::get('/', Dashboards\Index::class)->name('dashboard.index');
     Route::get('accounts', Accounts\Index::class)->name('accounts.index');

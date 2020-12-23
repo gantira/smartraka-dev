@@ -2,10 +2,9 @@
 
 namespace App\Exports;
 
-use App\Models\DocumentDetail;
+use App\Models\Neraca;
 use Carbon\Carbon;
 use Illuminate\Contracts\View\View;
-use Illuminate\Support\Facades\DB;
 use Maatwebsite\Excel\Concerns\Exportable;
 use Maatwebsite\Excel\Concerns\FromView;
 use Maatwebsite\Excel\Concerns\WithStyles;
@@ -34,25 +33,29 @@ class RevenueExport implements WithStyles, FromView
 
     public function view(): View
     {
-        $revenues = DocumentDetail::verified()
-            ->select('*', DB::raw("DATE_FORMAT(created_at, '%Y-%m') AS yearMonth"))
-            ->when(!auth()->user()->hasRole('admin|super-admin'), function ($q) {
-                return $q->myCompany();
-            })
+        $neraca = Neraca::query()
             ->when($this->company_id, function ($q) {
-                return $q->whereHas('document.category', function ($q) {
+                return $q->whereHas('company', function ($q) {
                     return $q->where('company_id', $this->company_id);
                 });
             })
-            ->when($this->periode, function ($q) {
-                return $q->whereMonth('created_at', Carbon::parse($this->periode)->month)->whereYear('created_at', Carbon::parse($this->periode)->year);
+            ->when($this->periode, function ($query) {
+                return $query->where('month', Carbon::parse($this->periode)->month)->where('year', Carbon::parse($this->periode)->year);
             })
-            ->get()->groupBy([
+            ->get()
+            ->groupBy([
                 'company_label',
-                'account_status_label',
-                'account_label',
-                'product_label',
-            ], true)->transform(function ($item) {
+                function ($item) {
+                    return $item->neraca_account->status_label;
+                },
+                function ($item) {
+                    return $item->neraca_account->name;
+                },
+                function ($item) {
+                    return $item->name;
+                },
+            ])
+            ->transform(function ($item) {
                 return $item->transform(function ($item) {
                     return $item->transform(function ($item) {
                         return $item->transform(function ($item) {
@@ -65,7 +68,7 @@ class RevenueExport implements WithStyles, FromView
         $title = $this->periode ? 'Laporan Laba Rugi Periode ' . Carbon::parse($this->periode)->formatLocalized('%B %Y') : 'Laporan Laba Rugi';
 
         return view('exports.excel.revenue', [
-            'revenues' => $revenues,
+            'neraca' => $neraca,
             'title' => $title
         ]);
     }
