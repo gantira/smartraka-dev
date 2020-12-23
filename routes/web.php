@@ -47,6 +47,7 @@ Route::middleware('auth')->group(function () {
     Route::get('reports/journal', Reports\Journal::class)->name('reports.journal');
     Route::get('reports/ledger', Reports\Ledger::class)->name('reports.ledger');
     Route::get('reports/revenue', Reports\Revenue::class)->name('reports.revenue');
+    Route::get('reports/neraca', Reports\Neraca::class)->name('reports.neraca');
 
     /* HR */
     Route::get('hrms', function () {

@@ -63,7 +63,6 @@ class DocumentDetail extends Model
         return $this->document->category->company->name;
     }
 
-
     public function scopeTotal($query)
     {
         return $query->count();
