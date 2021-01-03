@@ -20,10 +20,17 @@ class Neraca extends Component
     public $periode;
     public $perPage = 5;
 
-    protected $listeners = ['excel', 'pdf'];
+    protected $listeners = ['excel', 'pdf', 'add'];
     protected $paginationTheme = 'bootstrap';
 
     protected $queryString = ['company_id' => ['except' => ''], 'periode' => ['except' => '']];
+
+    public function add()
+    {
+        $this->reset();
+
+        $this->emit('modal');
+    }
 
     public function render()
     {
