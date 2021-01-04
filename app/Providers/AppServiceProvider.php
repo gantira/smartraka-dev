@@ -26,7 +26,16 @@ class AppServiceProvider extends ServiceProvider
     {
         setlocale(LC_TIME, 'IND');
 
-        View::composer(['exports.pdf.daily', 'exports.pdf.journal', 'exports.pdf.ledger', 'exports.pdf.revenue', 'exports.pdf.neraca', 'report.pdf.finance'], 'App\Http\View\SignatureComposer');
-
+        View::composer(
+            [
+                'exports.pdf.daily',
+                'exports.pdf.journal',
+                'exports.pdf.ledger',
+                'exports.pdf.revenue',
+                'exports.pdf.neraca',
+                'exports.pdf.finance'
+            ],
+            'App\Http\View\SignatureComposer'
+        );
     }
 }

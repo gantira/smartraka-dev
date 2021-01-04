@@ -42,4 +42,8 @@ class Sof extends Model
     {
         return $this->belongsTo(Company::class);
     }
+
+    function scopeVerified($query) {
+        return $query->whereStatus(1);
+    }
 }

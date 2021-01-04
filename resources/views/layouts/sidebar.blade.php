@@ -4,31 +4,30 @@
         <ul class="metismenu ">
             <li class="{{ Request::segment(2) === 'index' ? 'active' : null }}"><a href="{{url('/')}}"><i class="icon-speedometer"></i><span>Dashboard</span></a></li>
             <li class="g_heading text-secondary">Master</li>
-            <li class="{{ Request::segment(1) === 'users' ? 'active' : null }}"><a href="{{route('users.index')}}"><i class="icon-users"></i><span>Users</span></a></li>
-            <li class="{{ Request::segment(1) === 'accounts' ? 'active' : null }}"><a href="{{route('accounts.index')}}"><i class="icon-users"></i><span>Accounts</span></a></li>
+            <li class="{{ Request::segment(1) === 'users' ? 'active' : null }}"><a href="{{route('users.index')}}"><i class="icon-user"></i><span>Users</span></a></li>
+            <li class="{{ Request::segment(1) === 'accounts' ? 'active' : null }}"><a href="{{route('accounts.index')}}"><i class="icon-tag"></i><span>Accounts</span></a></li>
             <li class="{{ Request::segment(1) === 'genders' ? 'active' : null }}"><a href="{{route('genders.index')}}"><i class="icon-users"></i><span>Genders</span></a></li>
-            <li class="{{ Request::segment(1) === 'maritals' ? 'active' : null }}"><a href="{{route('maritals.index')}}"><i class="icon-users"></i><span>Maritals</span></a></li>
-            <li class="{{ Request::segment(1) === 'jobtitles' ? 'active' : null }}"><a href="{{route('jobtitles.index')}}"><i class="icon-users"></i><span>Job TItles</span></a></li>
-            <li class="{{ Request::segment(1) === 'educations' ? 'active' : null }}"><a href="{{route('educations.index')}}"><i class="icon-users"></i><span>Educations</span></a></li>
-            <li class="{{ Request::segment(1) === 'religions' ? 'active' : null }}"><a href="{{route('religions.index')}}"><i class="icon-users"></i><span>Religions</span></a></li>
-            <li class="{{ Request::segment(1) === 'units' ? 'active' : null }}"><a href="{{route('units.index')}}"><i class="icon-users"></i><span>Units</span></a></li>
-            <li class="{{ Request::segment(1) === 'companies' ? 'active' : null }}"><a href="{{route('companies.index')}}"><i class="icon-users"></i><span>Companies</span></a></li>
-            <li class="{{ Request::segment(1) === 'settings' ? 'active' : null }}"><a href="{{route('settings.index')}}"><i class="icon-users"></i><span>Settings</span></a></li>
-            <li class="{{ Request::segment(1) === 'products' ? 'active' : null }}"><a href="{{route('products.index')}}"><i class="icon-users"></i><span>Products</span></a></li>
-            <li class="{{ Request::segment(1) === 'signatures' ? 'active' : null }}"><a href="{{route('signatures.index')}}"><i class="icon-users"></i><span>Signatures</span></a></li>
-            <li class="{{ Request::segment(1) === 'categories' ? 'active' : null }}"><a href="{{route('categories.index')}}"><i class="icon-users"></i><span>Categories</span></a></li>
+            <li class="{{ Request::segment(1) === 'maritals' ? 'active' : null }}"><a href="{{route('maritals.index')}}"><i class="icon-globe-alt"></i><span>Maritals</span></a></li>
+            <li class="{{ Request::segment(1) === 'jobtitles' ? 'active' : null }}"><a href="{{route('jobtitles.index')}}"><i class="icon-cup"></i><span>Job TItles</span></a></li>
+            <li class="{{ Request::segment(1) === 'educations' ? 'active' : null }}"><a href="{{route('educations.index')}}"><i class="icon-graduation"></i><span>Educations</span></a></li>
+            <li class="{{ Request::segment(1) === 'religions' ? 'active' : null }}"><a href="{{route('religions.index')}}"><i class="icon-star"></i><span>Religions</span></a></li>
+            <li class="{{ Request::segment(1) === 'units' ? 'active' : null }}"><a href="{{route('units.index')}}"><i class="icon-compass"></i><span>Units</span></a></li>
+            <li class="{{ Request::segment(1) === 'companies' ? 'active' : null }}"><a href="{{route('companies.index')}}"><i class="icon-home"></i><span>Companies</span></a></li>
+            <li class="{{ Request::segment(1) === 'settings' ? 'active' : null }}"><a href="{{route('settings.index')}}"><i class="icon-settings"></i><span>Settings</span></a></li>
+            <li class="{{ Request::segment(1) === 'products' ? 'active' : null }}"><a href="{{route('products.index')}}"><i class="icon-note"></i><span>Products</span></a></li>
+            <li class="{{ Request::segment(1) === 'signatures' ? 'active' : null }}"><a href="{{route('signatures.index')}}"><i class="icon-pencil"></i><span>Signatures</span></a></li>
+            <li class="{{ Request::segment(1) === 'categories' ? 'active' : null }}"><a href="{{route('categories.index')}}"><i class="icon-layers"></i><span>Categories</span></a></li>
             <li class="g_heading text-secondary">General</li>
-            <li class="{{ Request::segment(1) === 'documents' ? 'active' : null }}"><a href="{{route('documents.index')}}"><i class="icon-users"></i><span>Documents</span></a></li>
-            <li class="{{ Request::segment(1) === 'sofs' ? 'active' : null }}"><a href="{{route('sofs.index')}}"><i class="icon-users"></i><span>Submission of Funds</span></a></li>
+            <li class="{{ Request::segment(1) === 'documents' ? 'active' : null }}"><a href="{{route('documents.index')}}"><i class="icon-folder-alt"></i><span>Documents</span></a></li>
+            <li class="{{ Request::segment(1) === 'sofs' ? 'active' : null }}"><a href="{{route('sofs.index')}}"><i class="icon-diamond"></i><span>Submission of Funds</span></a></li>
             
             <li class="g_heading text-secondary">Report</li>
-            <li class="{{ Route::currentRouteName() === 'reports.daily' ? 'active' : null }}"><a href="{{route('reports.daily')}}"><i class="icon-users"></i><span>Daily</span></a></li>
-            <li class="{{ Route::currentRouteName() === 'reports.journal' ? 'active' : null }}"><a href="{{route('reports.journal')}}"><i class="icon-users"></i><span>Journal</span></a></li>
-            <li class="{{ Route::currentRouteName() === 'reports.ledger' ? 'active' : null }}"><a href="{{route('reports.ledger')}}"><i class="icon-users"></i><span>Ledger</span></a></li>
-            <li class="{{ Route::currentRouteName() === 'reports.revenue' ? 'active' : null }}"><a href="{{route('reports.revenue')}}"><i class="icon-users"></i><span>Revenue</span></a></li>
-            <li class="{{ Route::currentRouteName() === 'reports.neraca' ? 'active' : null }}"><a href="{{route('reports.neraca')}}"><i class="icon-users"></i><span>Neraca</span></a></li>
-            <li class="{{ Request::segment(1) === 'sofs' ? 'active' : null }}"><a href="{{route('sofs.index')}}"><i class="icon-users"></i><span>Balance</span></a></li>
-            <li class="{{ Request::segment(1) === 'sofs' ? 'active' : null }}"><a href="{{route('sofs.index')}}"><i class="icon-users"></i><span>Finance</span></a></li>
+            <li class="{{ Route::currentRouteName() === 'reports.daily' ? 'active' : null }}"><a href="{{route('reports.daily')}}"><i class="icon-book-open"></i><span>Daily</span></a></li>
+            <li class="{{ Route::currentRouteName() === 'reports.journal' ? 'active' : null }}"><a href="{{route('reports.journal')}}"><i class="icon-book-open"></i><span>Journal</span></a></li>
+            <li class="{{ Route::currentRouteName() === 'reports.ledger' ? 'active' : null }}"><a href="{{route('reports.ledger')}}"><i class="icon-book-open"></i><span>Ledger</span></a></li>
+            <li class="{{ Route::currentRouteName() === 'reports.revenue' ? 'active' : null }}"><a href="{{route('reports.revenue')}}"><i class="icon-book-open"></i><span>Revenue</span></a></li>
+            <li class="{{ Route::currentRouteName() === 'reports.neraca' ? 'active' : null }}"><a href="{{route('reports.neraca')}}"><i class="icon-book-open"></i><span>Neraca</span></a></li>
+            <li class="{{ Route::currentRouteName() === 'reports.finance' ? 'active' : null }}"><a href="{{route('reports.finance')}}"><i class="icon-book-open"></i><span>Finance</span></a></li>
             
             {{-- <li class="g_heading text-secondary">Options</li>
             <li class="{{ Request::segment(1) === 'project' ? 'active' : null }}">

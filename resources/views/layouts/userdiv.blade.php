@@ -3,21 +3,21 @@
     <div class="card">
         <div class="card-body">
             <div class="media">
-                <img class="avatar avatar-xl mr-3" src="{{ asset('assets/images/sm/avatar1.jpg') }}" alt="avatar">
+                <img class="avatar avatar-xl mr-3" src="{{ asset(auth()->user()->foto_preview) }}" alt="avatar">
                 <div class="media-body">
-                    <h5 class="m-0">Sara Hopkins</h5>
-                    <p class="text-muted mb-0">Webdeveloper</p>
-                    <ul class="social-links list-inline mb-0 mt-2">
+                    <h5 class="m-0">{{ auth()->user()->name }}</h5>
+                    <p class="text-muted mb-0">{{ auth()->user()->company->name }}</p>
+                    {{-- <ul class="social-links list-inline mb-0 mt-2">
                         <li class="list-inline-item"><a href="javascript:void(0)" title="" data-toggle="tooltip" data-original-title="Facebook"><i class="fa fa-facebook"></i></a></li>
                         <li class="list-inline-item"><a href="javascript:void(0)" title="" data-toggle="tooltip" data-original-title="Twitter"><i class="fa fa-twitter"></i></a></li>
                         <li class="list-inline-item"><a href="javascript:void(0)" title="" data-toggle="tooltip" data-original-title="1234567890"><i class="fa fa-phone"></i></a></li>
                         <li class="list-inline-item"><a href="javascript:void(0)" title="" data-toggle="tooltip" data-original-title="@skypename"><i class="fa fa-skype"></i></a></li>
-                    </ul>
+                    </ul> --}}
                 </div>
             </div>
         </div>
     </div>
-    <div class="card">
+    {{-- <div class="card">
         <div class="card-header">
             <h3 class="card-title">Statistics</h3>
             <div class="card-options">
@@ -57,8 +57,8 @@
                 </div>
             </div>
         </div>
-    </div>
-    <div class="card b-none">
+    </div> --}}
+    {{-- <div class="card b-none">
         <ul class="list-group">
             <li class="list-group-item d-flex">
                 <div class="box-icon sm rounded bg-blue"><i class="fa fa-credit-card"></i> </div>
@@ -93,5 +93,5 @@
                 </div>
             </li>
         </ul>
-    </div>
+    </div> --}}
 </div>

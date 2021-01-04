@@ -26,6 +26,7 @@ Route::middleware('auth')->group(function () {
     Route::get('pdf/ledger/{company_id?}/{periode?}', [ExportPdfController::class, 'ledger'])->name('pdf.ledger.export');
     Route::get('pdf/revenue/{company_id?}/{periode?}', [ExportPdfController::class, 'revenue'])->name('pdf.revenue.export');
     Route::get('pdf/neraca/{company_id?}/{periode?}', [ExportPdfController::class, 'neraca'])->name('pdf.neraca.export');
+    Route::get('pdf/finance/{company_id?}/{periode?}', [ExportPdfController::class, 'finance'])->name('pdf.finance.export');
 
     Route::get('/', Dashboards\Index::class)->name('dashboard.index');
     Route::get('accounts', Accounts\Index::class)->name('accounts.index');
@@ -49,6 +50,7 @@ Route::middleware('auth')->group(function () {
     Route::get('reports/ledger', Reports\Ledger::class)->name('reports.ledger');
     Route::get('reports/revenue', Reports\Revenue::class)->name('reports.revenue');
     Route::get('reports/neraca', Reports\Neraca::class)->name('reports.neraca');
+    Route::get('reports/finance', Reports\Finance::class)->name('reports.finance');
 
     /* HR */
     Route::get('hrms', function () {

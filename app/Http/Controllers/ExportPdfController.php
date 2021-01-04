@@ -200,4 +200,31 @@ class ExportPdfController extends Controller
             'title' => $title
         ])->download('Laporan Neraca.pdf');
     }
+
+    public function finance($company_id = null, $periode = null)
+    {
+        $finance = DocumentDetail::query()
+            ->when($periode, function ($query) use ($periode) {
+                return $query->whereMonth('created_at', Carbon::parse($periode)->month)->whereYear('created_at', Carbon::parse($periode)->year);
+            })
+            ->get()
+            ->groupBy([
+                'company_label',
+                'account_status_label',
+            ])
+            ->transform(function ($item) {
+                return $item->transform(function ($item) {
+                    return $item->sum('price');
+                });
+            })->transform(function ($item) use ($periode) {
+                return $item['Pendapatan'] ?: 0 - $item['Biaya'] ?: 0;
+            });
+
+        $title = $periode ? 'Laporan Keuangan Periode ' . Carbon::parse($periode)->formatLocalized('%B %Y') : 'Laporan Keuangan';
+
+        return PDF::loadView('exports.pdf.finance', [
+            'finance' => $finance,
+            'title' => $title
+        ])->download('Laporan Keuangan.pdf');
+    }
 }
