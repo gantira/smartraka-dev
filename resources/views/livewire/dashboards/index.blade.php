@@ -8,7 +8,7 @@
             <div class="row clearfix">
                 <div class="col-lg-12">
                     <div class="mb-4">
-                        <h4>Welcome {{ auth()->user()->name }}!</h4>
+                        <h4>Hai, {{ auth()->user()->name }}!</h4>
                         <small>Measure How Fast You’re Growing Monthly Recurring Revenue. <a href="#">Learn More</a></small>
                     </div>
                 </div>
@@ -66,7 +66,7 @@
                 <div class="col-xl-12 col-lg-12 col-md-12">
                     <div class="card">
                         <div class="card-header">
-                            <h3 class="card-title">Statistics</h3>
+                            <h3 class="card-title">Statistik</h3>
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">

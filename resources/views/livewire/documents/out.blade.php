@@ -5,7 +5,7 @@
                 <div class="form-group">
                     <select wire:model.defer='category_id'
                         class="form-control @error('category_id') is-invalid @enderror">
-                        <option value="">-- Select Category --</option>
+                        <option value="">-- Pilih Kategori --</option>
                         @foreach ($selectCategories as $category)
                             <option value="{{ $category->id }}">{{ $category->name }}</option>
                         @endforeach
@@ -30,7 +30,7 @@
                 </div>
                 <div class="form-group">
                     <input wire:model.defer='sof' type="text" class="form-control @error('sof') is-invalid @enderror"
-                        placeholder="Source of Funds">
+                        placeholder="Sumber Dana">
                     @error('sof')
                     <div class="invalid-feedback">
                         {{ $message }}
@@ -40,7 +40,7 @@
                 <div class="form-group">
                     <textarea wire:model.defer='description'
                         class="form-control @error('description') is-invalid @enderror"
-                        placeholder="Description"></textarea>
+                        placeholder="Deskripsi"></textarea>
                     @error('description')
                     <div class="invalid-feedback">
                         {{ $message }}
@@ -61,7 +61,7 @@
                         <span class="fa fa-upload"></span> Upload attachment
                     </label>
 
-                    <input wire:model="image" type="file" id="profileImageOut" style="display: none;" accept="image/*">
+                    <input wire:model="image" type="file" id="profileImageOut" style="display: none;" accept="image/png">
 
 
                     @error('image')
@@ -72,7 +72,7 @@
                 </div>
                 <div class="form-group">
                     <div class="modal-footer">
-                        <button type="submit" class="btn btn-primary">Submit</button>
+                        <button type="submit" class="btn btn-primary">Simpan</button>
                         <button class="btn btn-default" data-dismiss="modal">Close</button>
                     </div>
                 </div>
@@ -92,7 +92,7 @@
                 <div class="col">
                     <select class="form-control @error('product_id') is-invalid @enderror"
                         wire:model.defer="product_id">
-                        <option value="">-- Select Detail Dokumen</option>
+                        <option value="">-- Pilih Dokumen</option>
                         @foreach ($selectProducts as $product)
                             <option value="{{ $product->id }}">{{ $product->name }} - {{ rupiah($product->price) }}
                             </option>
@@ -100,23 +100,23 @@
                     </select>
                 </div>
                 <div class="col">
-                    <input type="text" class="form-control @error('qty') is-invalid @enderror" placeholder="Qty"
+                    <input type="text" class="form-control @error('qty') is-invalid @enderror" placeholder="Jumlah"
                         wire:model.defer="qty">
                 </div>
                 <div class="col">
-                    <input type="text" class="form-control @error('price') is-invalid @enderror" placeholder="Amount"
+                    <input type="text" class="form-control @error('price') is-invalid @enderror" placeholder="Harga"
                         wire:model.defer="price">
                 </div>
                 <div class="col">
-                    <button type="button" class="btn btn-light" wire:click="addToCart">Add</button>
+                    <button type="button" class="btn btn-primary" wire:click="addToCart">Tambah</button>
                 </div>
             </div>
 
             <table class="table table-striped table-hover">
                 <thead>
                     <th>Document</th>
-                    <th>Qty</th>
-                    <th class="text-right">Amount</th>
+                    <th>Jumlah</th>
+                    <th class="text-right">Harga</th>
                     <th class="text-right">Subtotal</th>
                     <th></th>
                 </thead>

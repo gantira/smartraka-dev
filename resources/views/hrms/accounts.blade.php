@@ -82,7 +82,7 @@
                                 <form>
                                     <div class="input-group">
                                         <input type="text" class="form-control form-control-sm"
-                                            placeholder="Search something..." name="s">
+                                            placeholder="Cari..." name="s">
                                         <span class="input-group-btn ml-2"><button class="btn btn-icon btn-sm"
                                                 type="submit"><span class="fe fe-search"></span></button></span>
                                     </div>

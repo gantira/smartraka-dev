@@ -3,7 +3,7 @@
         <form wire:submit.prevent='submit'>
             <div class="modal-content">
                 <div class="modal-header">
-                    <h6 class="title" id="defaultModalLabel">{{ $editMode ? 'Edit' : 'Add' }} Account </h6>
+                    <h6 class="title" id="defaultModalLabel">{{ $editMode ? 'Edit' : 'Tambah' }} Account </h6>
                 </div>
                 <div class="modal-body">
                     @if (session()->has('success'))
@@ -16,7 +16,7 @@
                         <div class="col-12">
                             <div class="form-group">
                                 <input wire:model.defer='name' type="text"
-                                    class="form-control @error('name') is-invalid @enderror" placeholder="Name">
+                                    class="form-control @error('name') is-invalid @enderror" placeholder="Nama">
                                 @error('name')
                                 <div class="invalid-feedback">
                                     {{ $message }}
@@ -58,7 +58,7 @@
                         <div class="col-12">
                             <div class="form-group">
                                 <input wire:model.defer='phone' type="text"
-                                    class="form-control @error('phone') is-invalid @enderror" placeholder="Phone">
+                                    class="form-control @error('phone') is-invalid @enderror" placeholder="Telepon">
                                 @error('phone')
                                 <div class="invalid-feedback">
                                     {{ $message }}
@@ -71,7 +71,7 @@
                     <div class="row clearfix">
                         <div class="col-12">
                             <div class="form-group">
-                                <textarea wire:model.defer='address' class="form-control @error('address') is-invalid @enderror" placeholder="Address"></textarea>
+                                <textarea wire:model.defer='address' class="form-control @error('address') is-invalid @enderror" placeholder="Alamat"></textarea>
                                 @error('address')
                                 <div class="invalid-feedback">
                                     {{ $message }}
@@ -82,7 +82,7 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="submit" class="btn btn-primary">{{ $editMode ? 'Update' : 'Add' }}</button>
+                    <button type="submit" class="btn btn-primary">{{ $editMode ? 'Update' : 'Tambah' }}</button>
                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                 </div>
         </form>

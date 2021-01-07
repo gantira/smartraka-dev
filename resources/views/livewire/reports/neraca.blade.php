@@ -7,12 +7,12 @@
         <div class="container-fluid">
             <div class="d-flex justify-content-between align-items-center">
                 <ul class="nav nav-tabs page-header-tab">
-                    <li class="nav-item"><a class="nav-link active" id="user-tab" data-toggle="tab"
-                            href="#user-list">List</a></li>
+                    <li class="nav-item"><a class="nav-link " id="user-tab" data-toggle="tab"
+                            href="#user-list"></a></li>
                 </ul>
-                <div class="header-action">
+                <div class="header-action mt-2">
                     <button type="button" class="btn btn-primary" wire:click="$emit('add')"><i
-                            class="fe fe-plus mr-2"></i>Add</button>
+                            class="fe fe-plus mr-2"></i>Tambah</button>
                 </div>
             </div>
         </div>
@@ -23,7 +23,7 @@
                 <div class="tab-pane fade show active" id="user-list" role="tabpanel">
                     <div class="card">
                         <div class="card-header">
-                            <h3 class="card-title">Laporan Neraca</h3>
+                            <h3 class="card-title"></h3>
                             <div class="card-options">
                                 <select wire:model='company_id' class="form-control mr-10">
                                     <option value=""></option>

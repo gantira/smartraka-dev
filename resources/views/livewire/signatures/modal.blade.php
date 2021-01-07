@@ -3,7 +3,7 @@
         <form wire:submit.prevent='submit'>
             <div class="modal-content">
                 <div class="modal-header">
-                    <h6 class="title" id="defaultModalLabel">{{ $editMode ? 'Edit' : 'Add' }} Signature</h6>
+                    <h6 class="title" id="defaultModalLabel">{{ $editMode ? 'Edit' : 'Tambah' }} Penandatangan</h6>
                 </div>
                 <div class="modal-body">
                     @if (session()->has('success'))
@@ -21,7 +21,7 @@
                                     </div>
                                     <select wire:model.defer='user_id'
                                         class="form-control @error('user_id') is-invalid @enderror">
-                                        <option value="">-- Select User --</option>
+                                        <option value="">-- Pilih Pengguna --</option>
                                         @foreach ($selectUsers as $item)
                                             <option value="{{ $item->id }}">{{ $item->name }}</option>
                                         @endforeach
@@ -47,8 +47,8 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="submit" class="btn btn-primary">{{ $editMode ? 'Update' : 'Add' }}</button>
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">{{ $editMode ? 'Update' : 'Tambah' }}</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Keluar</button>
                 </div>
         </form>
     </div>

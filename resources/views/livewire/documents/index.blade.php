@@ -1,5 +1,5 @@
 @section('title')
-    Documents
+    Dokumen
 @endsection
 
 <div>
@@ -8,19 +8,14 @@
             <div class="d-md-flex justify-content-between align-items-center">
                 <ul class="nav nav-tabs page-header-tab">
                     <li class="nav-item active"><a class="nav-link active" id="Report-tab" data-toggle="tab"
-                            href="#invoice">List</a>
+                            href="#invoice">Daftar</a>
                     </li>
                     <li class="nav-item"><a class="nav-link" id="Report-tab" data-toggle="tab" href="#detail">Detail</a>
                     </li>
                 </ul>
                 <div class="header-action d-flex">
-                    <select class="custom-select mr-2">
-                        <option>Year</option>
-                        <option>Month</option>
-                        <option>Week</option>
-                    </select>
                     <button type="button" class="btn btn-primary" wire:click="$emit('add')"><i
-                            class="fe fe-plus mr-2"></i>Add</button>
+                            class="fe fe-plus mr-2"></i>Tambah</button>
                 </div>
             </div>
         </div>
@@ -65,12 +60,12 @@
                     </div>
                     <div class="card">
                         <div class="card-header">
-                            <h3 class="card-title">Document List</h3>
+                            <h3 class="card-title">Daftar</h3>
                             <div class="card-options">
                                 <form>
                                     <div class="input-group">
                                         <input type="text" class="form-control form-control-sm"
-                                            placeholder="Search something...">
+                                            placeholder="Cari...">
                                         <span class="input-group-btn ml-2"><button class="btn btn-icon btn-sm"
                                                 type="submit"><span class="fe fe-search"></span></button></span>
                                     </div>
@@ -83,12 +78,12 @@
                                     <thead>
                                         <tr>
                                             <th>Invoice No.</th>
-                                            <th>sof</th>
-                                            <th>Description</th>
-                                            <th>Transaction Date</th>
+                                            <th>Sumber Dana</th>
+                                            <th>Deskripsi</th>
+                                            <th>Tanggal</th>
                                             <th>Status</th>
-                                            <th>Amount</th>
-                                            <th class="w100">Action</th>
+                                            <th>Jumlah</th>
+                                            <th class="w100">Aksi</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -132,10 +127,10 @@
                                 <div class="card">
                                     <div class="card-header">
                                         <h3 class="card-title">#{{ $detail->invoice }}</h3>
-                                        <div class="card-options">
+                                        {{-- <div class="card-options">
                                             <button type="button" class="btn btn-primary"><i class="si si-printer"></i>
                                                 Print Invoice</button>
-                                        </div>
+                                        </div> --}}
                                     </div>
                                     <div class="card-body">
                                         <div class="row my-8">
@@ -150,10 +145,10 @@
                                             <div class="col-6 text-right">
                                                 <p class="h3">Invoice#{{ $detail->invoice }}</p>
                                                 <address>
-                                                    Date:
+                                                    Tanggal:
                                                     {{ \Carbon\Carbon::parse($document->transaction_date)->format('d F, Y') }}<br>
                                                     Status: {!! $detail->status_label !!}<br>
-                                                    Source of funds: {{ $detail->sof }}<br>
+                                                    Sumber Dana: {{ $detail->sof }}<br>
                                                 </address>
                                             </div>
                                         </div>
@@ -162,10 +157,10 @@
                                                 <tbody>
                                                     <tr>
                                                         <th class="text-center width35"></th>
-                                                        <th>Product</th>
-                                                        <th class="text-center" style="width: 1%">Qnt</th>
-                                                        <th class="text-right" style="width: 1%">Unit</th>
-                                                        <th class="text-right" style="width: 1%">Amount</th>
+                                                        <th>Produk</th>
+                                                        <th class="text-center" style="width: 1%">Jumlah</th>
+                                                        <th class="text-right" style="width: 1%">Satuan</th>
+                                                        <th class="text-right" style="width: 1%">Subtotal</th>
                                                     </tr>
                                                     @foreach ($detail->documentdetail as $index => $item)
                                                         <tr>

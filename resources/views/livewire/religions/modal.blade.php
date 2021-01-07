@@ -3,7 +3,7 @@
         <form wire:submit.prevent='submit'>
             <div class="modal-content">
                 <div class="modal-header">
-                    <h6 class="title" id="defaultModalLabel">{{ $editMode ? 'Edit' : 'Add' }} Religion </h6>
+                    <h6 class="title" id="defaultModalLabel">{{ $editMode ? 'Edit' : 'Tambah' }} Agama </h6>
                 </div>
                 <div class="modal-body">
                     @if (session()->has('success'))
@@ -16,7 +16,7 @@
                         <div class="col-12">
                             <div class="form-group">
                                 <input wire:model.defer='name' type="text"
-                                    class="form-control @error('name') is-invalid @enderror" placeholder="Name">
+                                    class="form-control @error('name') is-invalid @enderror" placeholder="Nama">
                                 @error('name')
                                 <div class="invalid-feedback">
                                     {{ $message }}
@@ -27,8 +27,8 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="submit" class="btn btn-primary">{{ $editMode ? 'Update' : 'Add' }}</button>
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">{{ $editMode ? 'Update' : 'Tambah' }}</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Keluar</button>
                 </div>
         </form>
     </div>

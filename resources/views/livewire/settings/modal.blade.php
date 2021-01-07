@@ -3,7 +3,7 @@
         <form wire:submit.prevent='submit'>
             <div class="modal-content">
                 <div class="modal-header">
-                    <h6 class="title" id="defaultModalLabel">{{ $editMode ? 'Edit' : 'Add' }} Funds </h6>
+                    <h6 class="title" id="defaultModalLabel">{{ $editMode ? 'Edit' : 'Tambah' }} Pengajuan Dana </h6>
                 </div>
                 <div class="modal-body">
                     @if (session()->has('success'))
@@ -16,7 +16,7 @@
                         <div class="col-12">
                             <div class="form-group">
                                 <input wire:model.defer='funds' type="text"
-                                    class="form-control @error('funds') is-invalid @enderror" placeholder="Funds">
+                                    class="form-control @error('funds') is-invalid @enderror" placeholder="Max Dana">
                                 @error('funds')
                                 <div class="invalid-feedback">
                                     {{ $message }}
@@ -27,7 +27,7 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="submit" class="btn btn-primary">{{ $editMode ? 'Update' : 'Add' }}</button>
+                    <button type="submit" class="btn btn-primary">{{ $editMode ? 'Update' : 'Tambah' }}</button>
                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                 </div>
         </form>

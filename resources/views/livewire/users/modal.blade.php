@@ -3,7 +3,7 @@
         <form wire:submit.prevent='submit'>
             <div class="modal-content">
                 <div class="modal-header">
-                    <h6 class="title" id="defaultModalLabel">{{ $editMode ? 'Edit' : 'Add' }} User </h6>
+                    <h6 class="title" id="defaultModalLabel">{{ $editMode ? 'Edit' : 'Tambah' }} Pengguna </h6>
                 </div>
                 <div class="modal-body">
                     @if (session()->has('success'))
@@ -18,12 +18,12 @@
                                 <div class="form-group">
                                     <div class="input-group">
                                         <div class="input-group-prepend">
-                                            <span class="input-group-text" title="Full Name"><i
+                                            <span class="input-group-text" title="Nama Lengkap"><i
                                                     class="fa fa-user-o"></i></span>
                                         </div>
                                         <input wire:model.defer='name' type="text"
                                             class="form-control @error('name') is-invalid @enderror"
-                                            placeholder="Full Name">
+                                            placeholder="Nama Lengkap">
                                     </div>
                                 </div>
                             </div>
@@ -48,7 +48,7 @@
                                         </div>
                                         <input wire:model.defer='phone' type="text"
                                             class="form-control @error('phone') is-invalid @enderror"
-                                            placeholder="Phone">
+                                            placeholder="Whatsapp">
                                     </div>
                                 </div>
                             </div>
@@ -56,12 +56,12 @@
                                 <div class="form-group">
                                     <div class="input-group">
                                         <div class="input-group-prepend">
-                                            <span class="input-group-text" title="ID Card"><i
+                                            <span class="input-group-text" title="KTP / SIM"><i
                                                     class="fa fa-id-card-o"></i></span>
                                         </div>
                                         <input wire:model.defer='id_card' type="text"
                                             class="form-control @error('id_card') is-invalid @enderror"
-                                            placeholder="ID Card">
+                                            placeholder="KTP / SIM">
                                     </div>
                                 </div>
                             </div>
@@ -69,12 +69,12 @@
                                 <div class="form-group">
                                     <div class="input-group">
                                         <div class="input-group-prepend">
-                                            <span class="input-group-text" title="Birthday"><i
+                                            <span class="input-group-text" title="Tanggal Lahir"><i
                                                     class="fa fa-gift"></i></span>
                                         </div>
                                         <input type="date" wire:model.defer='dob'
                                             class="form-control @error('dob') is-invalid @enderror"
-                                            placeholder="Birthdate">
+                                            placeholder="Tanggal Lahir">
                                     </div>
                                 </div>
                             </div>
@@ -82,12 +82,12 @@
                                 <div class="form-group">
                                     <div class="input-group">
                                         <div class="input-group-prepend">
-                                            <span class="input-group-text" title="Gender"><i
+                                            <span class="input-group-text" title="Jenis Kelamin"><i
                                                     class="fa fa-intersex"></i></span>
                                         </div>
                                         <select wire:model.defer='gender_id'
                                             class="form-control @error('gender_id') is-invalid @enderror">
-                                            <option value="">-- Select Gender --</option>
+                                            <option value="">-- Pilih Jenis Kelamin --</option>
                                             @foreach ($selectGenders as $gender)
                                                 <option value="{{ $gender->id }}">{{ $gender->name }}</option>
                                             @endforeach
@@ -99,12 +99,12 @@
                                 <div class="form-group">
                                     <div class="input-group">
                                         <div class="input-group-prepend">
-                                            <span class="input-group-text" title="Company"><i
+                                            <span class="input-group-text" title="Cabang"><i
                                                     class="fa fa-suitcase"></i></span>
                                         </div>
                                         <select wire:model.defer='company_id'
                                             class="form-control @error('company_id') is-invalid @enderror">
-                                            <option value="">-- Select Company --</option>
+                                            <option value="">-- Pilih Cabang --</option>
                                             @foreach ($selectCompanies as $company)
                                                 <option value="{{ $company->id }}">{{ $company->name }}</option>
                                             @endforeach
@@ -117,12 +117,12 @@
                                 <div class="form-group">
                                     <div class="input-group">
                                         <div class="input-group-prepend">
-                                            <span class="input-group-text" title="Religion"><i
+                                            <span class="input-group-text" title="Agama"><i
                                                     class="fa fa-sun-o"></i></span>
                                         </div>
                                         <select wire:model.defer='religion_id'
                                             class="form-control @error('religion_id') is-invalid @enderror">
-                                            <option value="">-- Select Religion --</option>
+                                            <option value="">-- Pilih Agama --</option>
                                             @foreach ($selectReligions as $religion)
                                                 <option value="{{ $religion->id }}">{{ $religion->name }}</option>
                                             @endforeach
@@ -134,12 +134,12 @@
                                 <div class="form-group">
                                     <div class="input-group">
                                         <div class="input-group-prepend">
-                                            <span class="input-group-text" title="Marital"><i
+                                            <span class="input-group-text" title="Status Pernikahan"><i
                                                     class="fa fa-address-book-o"></i></span>
                                         </div>
                                         <select wire:model.defer='marital_id'
                                             class="form-control @error('marital_id') is-invalid @enderror">
-                                            <option value="">-- Select Marital --</option>
+                                            <option value="">-- Pilih Status Pernikahan --</option>
                                             @foreach ($selectMaritals as $marital)
                                                 <option value="{{ $marital->id }}">{{ $marital->name }}</option>
                                             @endforeach
@@ -151,12 +151,12 @@
                                 <div class="form-group">
                                     <div class="input-group">
                                         <div class="input-group-prepend">
-                                            <span class="input-group-text" title="Education"><i
+                                            <span class="input-group-text" title="Pendidikan"><i
                                                     class="fa fa-graduation-cap"></i></span>
                                         </div>
                                         <select wire:model.defer='education_id'
                                             class="form-control @error('education_id') is-invalid @enderror">
-                                            <option value="">-- Select Education --</option>
+                                            <option value="">-- Pilih Pendidikan --</option>
                                             @foreach ($selectEducations as $education)
                                                 <option value="{{ $education->id }}">{{ $education->name }}</option>
                                             @endforeach
@@ -168,12 +168,12 @@
                                 <div class="form-group">
                                     <div class="input-group">
                                         <div class="input-group-prepend">
-                                            <span class="input-group-text" title="Positin"><i
+                                            <span class="input-group-text" title="Jabatan"><i
                                                     class="fa fa-black-tie"></i></span>
                                         </div>
                                         <select wire:model.defer='job_title_id'
                                             class="form-control @error('job_title_id') is-invalid @enderror">
-                                            <option value="">-- Select Job Title --</option>
+                                            <option value="">-- Pilih Jabatan --</option>
                                             @foreach ($selectJobTitles as $item)
                                                 <option value="{{ $item->id }}">{{ $item->name }}</option>
                                             @endforeach
@@ -202,14 +202,14 @@
                                     </div>
 
                                     <label for="profileImage" style="cursor: pointer;" class="my-2">
-                                        <span class="fa fa-upload"></span> Image Upload
+                                        <span class="fa fa-upload"></span> Foto
                                     </label>
                                     @if ($this->editMode)
                                         <input wire:model="updated_image" type="file" id="profileImage"
                                             style="display: none;" accept="image/*">
                                     @else
                                         <input wire:model="image" type="file" id="profileImage" style="display: none;"
-                                            accept="image/*">
+                                            accept="image/png">
                                     @endif
                                 </div>
                             </div>
@@ -268,8 +268,8 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="submit" class="btn btn-primary">{{ $editMode ? 'Update' : 'Add' }}</button>
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">{{ $editMode ? 'Update' : 'Tambah' }}</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Keluar</button>
                 </div>
         </form>
     </div>

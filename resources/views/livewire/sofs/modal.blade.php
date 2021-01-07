@@ -3,7 +3,7 @@
         <form wire:submit.prevent='submit'>
             <div class="modal-content">
                 <div class="modal-header">
-                    <h6 class="title" id="defaultModalLabel">{{ $editMode ? 'Edit' : 'Add' }} Submission of Funds </h6>
+                    <h6 class="title" id="defaultModalLabel">{{ $editMode ? 'Edit' : 'Tambah' }} Pengajuan Dana </h6>
                 </div>
                 <div class="modal-body">
                     @if (session()->has('success'))
@@ -16,7 +16,7 @@
                         <div class="col-12">
                             <div class="form-group">
                                 <input wire:model.defer='price' type="number"
-                                    class="form-control @error('price') is-invalid @enderror" placeholder="Amount"
+                                    class="form-control @error('price') is-invalid @enderror" placeholder="Nominal Dana"
                                     {{ $this->editMode ? 'readonly' : '' }}>
                                 @error('price')
                                 <div class="invalid-feedback">
@@ -27,7 +27,7 @@
                             <div class="form-group">
                                 <textarea wire:model.defer='description' type="text"
                                     class="form-control @error('description') is-invalid @enderror"
-                                    placeholder="Description" {{ $this->editMode ? 'readonly' : '' }}></textarea>
+                                    placeholder="Deskripsi" {{ $this->editMode ? 'readonly' : '' }}></textarea>
                                 @error('description')
                                 <div class="invalid-feedback">
                                     {{ $message }}
@@ -76,8 +76,8 @@
                 </div>
                 <div class="modal-footer">
                     <button type="submit"
-                        class="btn btn-primary {{ $this->show ? 'd-none' : '' }}">{{ $editMode ? 'Update' : 'Add' }}</button>
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        class="btn btn-primary {{ $this->show ? 'd-none' : '' }}">{{ $editMode ? 'Update' : 'Tambah' }}</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Keluar</button>
                 </div>
         </form>
     </div>

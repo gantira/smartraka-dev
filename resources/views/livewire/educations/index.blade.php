@@ -1,5 +1,5 @@
 @section('title')
-    Educations
+    Pendidikan
 @endsection
 
 <div>
@@ -12,7 +12,7 @@
                 </ul>
                 <div class="header-action">
                     <button type="button" class="btn btn-primary" wire:click="$emit('add')"><i
-                            class="fe fe-plus mr-2"></i>Add</button>
+                            class="fe fe-plus mr-2"></i>Tambah</button>
                 </div>
             </div>
         </div>
@@ -23,12 +23,12 @@
                 <div class="tab-pane fade show active" id="user-list" role="tabpanel">
                     <div class="card">
                         <div class="card-header">
-                            <h3 class="card-title">Education List</h3>
+                            <h3 class="card-title">Pendidikan</h3>
                             <div class="card-options">
                                 <form>
                                     <div class="input-group">
                                         <input type="text" wire:model.debounce.500ms="searchTerms"
-                                            class="form-control form-control-sm" placeholder="Search something...">
+                                            class="form-control form-control-sm" placeholder="Cari...">
                                         <span class="input-group-btn ml-2"><button class="btn btn-sm btn-default"
                                                 type="submit"><span class="fe fe-search"></span></button></span>
                                     </div>
@@ -40,9 +40,9 @@
                                 <table class="table table-sm table-striped table-hover table-vcenter text-nowrap mb-0">
                                     <thead>
                                         <tr>
-                                            <th>Name</th>
-                                            <th>Created Date</th>
-                                            <th class="w100">Action</th>
+                                            <th>Nama</th>
+                                            <th>Tanggal</th>
+                                            <th class="w100">Aksi</th>
                                         </tr>
                                     </thead>
                                     <tbody>

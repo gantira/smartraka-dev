@@ -3,7 +3,7 @@
         <form wire:submit.prevent='submit'>
             <div class="modal-content">
                 <div class="modal-header">
-                    <h6 class="title" id="defaultModalLabel">{{ $editMode ? 'Edit' : 'Add' }} Account </h6>
+                    <h6 class="title" id="defaultModalLabel">{{ $editMode ? 'Edit' : 'Tambah' }} Akun </h6>
                 </div>
                 <div class="modal-body">
                     @if (session()->has('success'))
@@ -16,7 +16,7 @@
                         <div class="col-12">
                             <div class="form-group">
                                 <input wire:model.defer='name' type="text"
-                                    class="form-control @error('name') is-invalid @enderror" placeholder="Name">
+                                    class="form-control @error('name') is-invalid @enderror" placeholder="Nama">
                                 @error('name')
                                 <div class="invalid-feedback">
                                     {{ $message }}
@@ -28,7 +28,7 @@
                             <div class="form-group">
                                 <input wire:model.defer='description' type="text"
                                     class="form-control @error('description') is-invalid @enderror"
-                                    placeholder=" Description">
+                                    placeholder="Deskripsi">
                                 @error('description')
                                 <div class="invalid-feedback">
                                     {{ $message }}
@@ -39,7 +39,7 @@
                         <div class="col-12">
                             <div class="form-group">
                                 <select wire:model.defer='status' class="form-control @error('status') is-invalid @enderror" placeholder="Pilih">
-                                    <option value="">-- Select Status --</option>
+                                    <option value="">-- Pilih Status --</option>
                                     <option value="0">Pemasukan</option>
                                     <option value="1">Pengeluaran</option>
                                     <option value="2">Cash Bank</option>
@@ -54,8 +54,8 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="submit" class="btn btn-primary">{{ $editMode ? 'Update' : 'Add' }}</button>
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">{{ $editMode ? 'Update' : 'Tambah' }}</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Keluar</button>
                 </div>
         </form>
     </div>
